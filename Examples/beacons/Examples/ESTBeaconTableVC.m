@@ -2,8 +2,8 @@
 //  ESTBeaconTableVC.m
 //  DistanceDemo
 //
-//  Created by Grzegorz Krukiewicz-Gacek on 17.03.2014.
-//  Copyright (c) 2014 Estimote. All rights reserved.
+//  Created by Cass Pangell
+//  7/7/15
 //
 
 #import "ESTBeaconTableVC.h"
@@ -32,6 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.navigationController setNavigationBarHidden:YES];
     
     self.beaconManager = [[ESTBeaconManager alloc] init];
     self.beaconManager.delegate = self;
@@ -180,23 +181,23 @@
         [self setDiameter:70.0];
         
         double locationX = ((self.view.frame.size.width/2)-(mdiameter/2));
-        double locationY = ((self.view.frame.size.height/2))*beacon.accuracy;
+        double locationY = ((self.view.frame.size.height))*beacon.accuracy;
         
         self.drawing = [[Bubble alloc] initWithFrame:CGRectMake(locationX, locationY, mdiameter, mdiameter) andDiameter:mdiameter andLineWidth:lWidth andColor:key];
         
         [self.view addSubview:self.drawing];
         
         self.drawing.alpha = 0;
-        [UIView animateWithDuration:5 animations:^(void) {
+        [UIView animateWithDuration:4 animations:^(void) {
             self.drawing.alpha = 1;
         }];
         
-        [UIView animateWithDuration:beacon.accuracy*70 animations:^(void) {
+        [UIView animateWithDuration:beacon.accuracy*40 animations:^(void) {
             self.drawing.transform = CGAffineTransformMakeScale(4.5, 4.5);
             
         }];
         
-        [UIView animateWithDuration:beacon.accuracy*70.0 animations:^(void) {
+        [UIView animateWithDuration:beacon.accuracy*40.0 animations:^(void) {
             self.drawing.alpha = 0;
         }];
         

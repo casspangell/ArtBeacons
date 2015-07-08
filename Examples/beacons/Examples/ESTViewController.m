@@ -95,7 +95,9 @@
                                                                      completion:^(CLBeacon *beacon) {
                                                                          
                                                                          ESTDistanceDemoVC *distanceDemoVC = [[ESTDistanceDemoVC alloc] initWithBeacon:beacon];
+                                                                         
                                                                          [self.navigationController pushViewController:distanceDemoVC animated:YES];
+                                                                        
                                                                      }];
                 
                 break;
